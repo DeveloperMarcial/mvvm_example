@@ -28,16 +28,16 @@ class AddUserScreen extends StatelessWidget {
             SizedBox(height: 20.0),
             TextFormField(
               decoration: InputDecoration(hintText: 'Name'),
-              // onChanged: (val) async {
-              //   userViewModel.addingUser.name = val;
-              // },
+              onChanged: (val) async {
+                userViewModel.addingUser.name = val;
+              },
             ),
             SizedBox(height: 20.0),
             TextFormField(
               decoration: InputDecoration(hintText: 'Email'),
-              // onChanged: (val) async {
-              //   userViewModel.addingUser.email = val;
-              // },
+              onChanged: (val) async {
+                userViewModel.addingUser.email = val;
+              },
             )
           ],
         ),
