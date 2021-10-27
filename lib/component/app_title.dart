@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTitle extends StatelessWidget {
   final String text;
-  AppTitle({this.text = ''});
+  AppTitle({this.text = '<no app title passed in>'});
 
   @override
   Widget build(BuildContext context) {

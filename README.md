@@ -10,16 +10,24 @@ Flutter application using MVVM. Here we will be using the
 package ‘Provider’ for state management.
 
 We will create three folders in our project.
-\views,       UI
-\view_models, Hold business logic 
+\view,        UI, *_screen.dart
+              Each screen calls:
+                 UserViewModel usersViewModel = context.watch<UserViewModel>();
+                 // This accesses the state in the UserViewModel.
+                 // We are calling this in the build method of the screens because whenever the
+                 // View-Model calls notifyListeners(), the build method in the
+                 // corresponding UI (screen) will be triggered and
+                 // it will be re-rendered and we will get the latest state value.
+
+\view_model,  Hold business logic 
               View-Model is just a middle man between your 'View' and the 'Service/Data Layer'
               View ← → View-Model ← → Repo
-              In this project holds a Service class that fetched the data from a DB, file, etc.
               The idea is to handle all the state related things and business logic
-              in the View Model so that our screens will remain Stateless,
+              in the View-Model so that our screens will remain Stateless,
               independent and easily testable and maintainable.
-\repo
-\models
+\repo,        Service routines.
+              In this project holds a Service Class that fetches the data from a DB, file, etc.
+\model,
 
 ## Getting Started
 
@@ -34,6 +42,20 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+Repo: convert JSON data to a class definition
+
+Here we will be fetching our data.
+First we need to create the model classes.
+Got to https://jsonplaceholder.typicode.com/users and copy the response.
+Now go to app.quicktype.io and select dart as language in the dropdown
+on the right side of the page.
+Now paste the response in the editor on the left.
+Give a name to the class and generate it.
+I am gonna give the name as “UsersListModel” and copy the generated class definition.
+Let’s create a file named “users_list_model.dart” in the “models” folders and save it.
+(see https://bitbucket.org/vipinvijayan1987/tutorialprojects/src/MVVM/FlutterTutorialProjects/flutter_demos/lib/users_list/models/)
+
+https://jsonplaceholder.typicode.com/users returns the following:
 [
 {
 "id": 1,

@@ -5,6 +5,11 @@ import 'package:provider/provider.dart';
 class AddUserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Access the state in the UserViewModel.
+    // We are calling this in the build method because whenever the
+    // ViewModel calls notifyListeners(), the build method in the
+    // corresponding UI will be triggered and
+    // it will be re-rendered and we will get the latest state value.
     UserViewModel userViewModel = context.watch<UserViewModel>();
     return Scaffold(
       appBar: AppBar(
@@ -12,10 +17,10 @@ class AddUserScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () async {
-                // bool userAdded = await userViewModel.addUser();
-                // if (!userAdded) {
-                //   return;
-                // }
+                bool userAdded = await userViewModel.addUser();
+                if (!userAdded) {
+                  return;
+                }
                 Navigator.pop(context);
               },
               icon: Icon(Icons.save))

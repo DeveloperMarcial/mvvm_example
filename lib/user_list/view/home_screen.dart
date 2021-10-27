@@ -10,7 +10,14 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //
+    // Access the state in the UserViewModel.
+    // We are calling this in the build method because whenever the
+    // ViewModel calls notifyListeners(), the build method in the
+    // corresponding UI will be triggered and
+    // it will be re-rendered and we will get the latest state value.
     UserViewModel usersViewModel = context.watch<UserViewModel>();
+    //
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -42,14 +49,17 @@ class HomeScreen extends StatelessWidget {
   }
 
   _ui(UserViewModel usersViewModel) {
+    //
     if (usersViewModel.loading) {
-      return AppLoading();
+      return AppLoading(); // show CupertinoActivityIndicator
     }
+    //
     if (usersViewModel.userError != null) {
       return AppError(
         errortxt: usersViewModel.userError.message,
       );
     }
+    //
     return Expanded(
       child: ListView.separated(
         itemBuilder: (context, index) {

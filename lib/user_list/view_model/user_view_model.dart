@@ -4,6 +4,17 @@ import 'package:mvvm_example/user_list/model/user_list_model.dart';
 import 'package:mvvm_example/user_list/repo/api_status.dart';
 import 'package:mvvm_example/user_list/repo/user_service.dart';
 
+/*
+   Holds business logic.
+   View-Model is just a middle man between your 'View' and the 'Service/Data Layer'
+   View ← → View-Model ← → Repo
+   The idea is to handle all the state related things and business logic
+   in the View-Model so that our screens will remain Stateless,
+   independent and easily testable and maintainable.
+*/
+
+// Here, we set the loading, UserListModel and UserError
+// in the View-Model so we read it in the UI, aka View.
 class UserViewModel extends ChangeNotifier {
   //
   bool _loading = false;
@@ -70,11 +81,15 @@ class UserViewModel extends ChangeNotifier {
   }
 
   getUsers() async {
+    //
     setLoading(true);
-    var response = await UserServices.getUsers();
+    //
+    var response = await UserServices.getUsers(); // Get users from an http API.
+    //
     if (response is Success) {
       setUserListModel(response.response as List<UserModel>);
     }
+    //
     if (response is Failure) {
       UserError userError = UserError(
         code: response.code,
@@ -82,6 +97,8 @@ class UserViewModel extends ChangeNotifier {
       );
       setUserError(userError);
     }
+    //
     setLoading(false);
+    //
   }
 }

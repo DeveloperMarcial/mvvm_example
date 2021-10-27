@@ -9,7 +9,7 @@ class UserListRow extends StatelessWidget {
 //  final Function onTap;       //does not work
 //  final Function? onTap;      //does not work
 //  final VoidCallback? onTap;  //works
-  final Function()? onTap; //works
+  final Function()? onTap; //     works
   UserListRow({required this.userModel, required this.onTap});
   //
   @override
