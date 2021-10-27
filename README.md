@@ -1,6 +1,6 @@
 # mvvm_example
 
-This project is based on the article at:
+This project is based on the article at :
 
 https://itnext.io/mvvm-in-flutter-using-providers-409c3c7e654
 https://www.youtube.com/watch?v=W1e7d3cvnRo
