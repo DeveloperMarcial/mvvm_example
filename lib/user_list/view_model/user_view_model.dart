@@ -84,16 +84,27 @@ class UserViewModel extends ChangeNotifier {
     //
     setLoading(true);
     //
-    var response = await UserServices.getUsers(); // Get users from an http API.
+    print('About to get users from an http API.');
+    var getUsersResponse =
+        await UserServices.getUsers(); // Get users from an http API.
+    print('Got users from an http API.');
     //
-    if (response is Success) {
-      setUserListModel(response.response as List<UserModel>);
+    print('getUsersResponse=$getUsersResponse');
+
+    if (getUsersResponse is Success) {
+      print('getUsersResponse.code=${getUsersResponse.code}');
+      print('getUsersResponse.response=${getUsersResponse.response}');
+      print('class UserViewModel.getUsers: success');
+      setUserListModel(getUsersResponse.response as List<UserModel>);
     }
     //
-    if (response is Failure) {
+    else if (getUsersResponse is Failure) {
+      print('getUsersResponse.code=${getUsersResponse.code}');
+      print('getUsersResponse.response=${getUsersResponse.errorResponse}');
+      print('class UserViewModel.getUsers: failure');
       UserError userError = UserError(
-        code: response.code,
-        message: response.errorResponse as String,
+        code: getUsersResponse.code,
+        message: getUsersResponse.errorResponse as String,
       );
       setUserError(userError);
     }

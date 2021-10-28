@@ -18,14 +18,26 @@ class UserModel {
     required this.company,
   });
 
-  int id;
-  String name;
-  String username;
-  String email;
-  Address address;
+  int id; //0.id
+  String name; //0.name
+  String username; //0.username
+  String email; //0.email
+  Address address; //0.address
+  //0.address.street
+  //0.address.suite,
+  //0.address.city,
+  //0.address.zipcode,
+  //0.address.geo
+  //0.address.geo.lat
+  //0.address.geo.lng
   String phone;
+  //0.address.phone;
   String website;
-  Company company;
+  //0.address.website;
+  Company company; //0.company
+  //0.company.name
+  //0.company.catchPhrase;
+  //0.company.bs;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["id"] == null ? null : json["id"],
@@ -33,7 +45,8 @@ class UserModel {
         username: json["username"] == null ? null : json["username"],
         email: json["email"] == null ? null : json["email"],
         address: json["address"],
-        //json["address"] == null ? null : Address.fromJson(json["address"]),
+        //address:
+        //    json["address"] == null ? null : Address.fromJson(json["address"]),
         phone: json["phone"] == null ? null : json["phone"],
         website: json["website"] == null ? null : json["website"],
         company: json["company"],
@@ -52,6 +65,7 @@ class UserModel {
       };
 }
 
+//0.address
 class Address {
   Address({
     required this.street,

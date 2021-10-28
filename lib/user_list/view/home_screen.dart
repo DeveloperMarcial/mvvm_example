@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () async {
-              usersViewModel.getUsers();
+              await usersViewModel.getUsers();
             },
             icon: Icon(Icons.refresh),
           )
@@ -51,10 +51,12 @@ class HomeScreen extends StatelessWidget {
   _ui(UserViewModel usersViewModel) {
     //
     if (usersViewModel.loading) {
+      print('usersViewModel.loading');
       return AppLoading(); // show CupertinoActivityIndicator
     }
     //
     if (usersViewModel.userError != null) {
+      print('usersViewModel.userError');
       return AppError(
         errortxt: usersViewModel.userError.message,
       );

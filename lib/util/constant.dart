@@ -1,10 +1,10 @@
 const String USERS_LIST = 'https://jsonplaceholder.typicode.com/users';
 
 // Success
-const SUCCESS = 200;
+const kSUCCESS = 200;
 
 // Errors
-const USER_INVALID_RESPONSE = 100;
-const NO_INTERNET = 101;
-const INVALID_FORMAT = 102;
-const UNKNOWN_ERROR = 103;
+const kUSER_INVALID_RESPONSE = 100;
+const kNO_INTERNET = 101;
+const kINVALID_FORMAT = 102;
+const kUNKNOWN_ERROR = 103;
